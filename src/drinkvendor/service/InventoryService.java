@@ -1,24 +1,23 @@
-package main.java.com.drinkvendor.service;
+package drinkvendor.service;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import main.java.com.drinkvendor.model.Drink;
-import main.java.com.drinkvendor.model.Fruit;
-import main.java.com.drinkvendor.model.Ingredient;
-import main.java.com.drinkvendor.model.Recipe;
+import drinkvendor.model.Drink;
+import drinkvendor.model.Fruit;
+import drinkvendor.model.Ingredient;
+import drinkvendor.model.Recipe;
 
 public class InventoryService {
     private Map<String, Ingredient> ingredients = new HashMap<>();
 
     public InventoryService() {
-        // Hardcoded starting inventory
-        ingredients.put("Strawberry", new Fruit("Strawberry", 100, 1000)); // 1000g strawberries
-        ingredients.put("Banana", new Fruit("Banana", 120, 1000)); // 1000g bananas
-        ingredients.put("Mango", new Fruit("Mango", 140, 1000)); // 1000g mangos
-        ingredients.put("Ice", new Ingredient("Ice", "ml", 3000)); // 3000ml ice
-        ingredients.put("Condensed Milk", new Ingredient("Condensed Milk", "ml", 2000)); // 2000ml condensed milk
-        ingredients.put("Sugar", new Ingredient("Sugar", "g", 1000)); // 1000g sugar
+        ingredients.put("Strawberry", new Fruit("Strawberry", 100, 1000));
+        ingredients.put("Banana", new Fruit("Banana", 120, 1000));
+        ingredients.put("Mango", new Fruit("Mango", 140, 1000));
+        ingredients.put("Ice", new Ingredient("Ice", "ml", 3000));
+        ingredients.put("Condensed Milk", new Ingredient("Condensed Milk", "ml", 2000));
+        ingredients.put("Sugar", new Ingredient("Sugar", "g", 1000));
     }
 
     public void listInventory() {
@@ -46,7 +45,7 @@ public class InventoryService {
             System.out.println("❌ Not enough ingredients to make " + drink.getName());
             return false;
         }
-        // Deduct ingredients
+
         for (Map.Entry<String, Double> entry : drink.getRecipe().getIngredients().entrySet()) {
             String ingredientName = entry.getKey();
             double requiredAmount = entry.getValue();
@@ -58,5 +57,28 @@ public class InventoryService {
 
     public Ingredient getIngredient(String name) {
         return ingredients.get(name);
+    }
+
+    public void checkLowInventory(Drink drink) {
+        System.out.println("=== Ingredient Stock Check ===");
+        boolean warning = false;
+
+        for (Map.Entry<String, Double> entry : drink.getRecipe().getIngredients().entrySet()) {
+            String ingredientName = entry.getKey();
+            double amountForOneDrink = entry.getValue();
+            double requiredForFourDrinks = amountForOneDrink * 4;
+
+            Ingredient ingredient = ingredients.get(ingredientName);
+            if (ingredient != null && ingredient.getQuantityAvailable() < requiredForFourDrinks) {
+                System.out.println("⚠️ Warning: Low stock for " + ingredientName + ". Available: " + ingredient.getQuantityAvailable());
+                warning = true;
+            }
+        }
+
+        if (!warning) {
+            System.out.println("✅ All ingredients sufficient for at least 4 more drinks.\n");
+        } else {
+            System.out.println();
+        }
     }
 }

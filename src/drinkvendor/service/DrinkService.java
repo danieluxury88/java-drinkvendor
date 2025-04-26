@@ -1,12 +1,12 @@
-package main.java.com.drinkvendor.service;
-
-import main.java.com.drinkvendor.model.Drink;
-import main.java.com.drinkvendor.model.Recipe;
+package drinkvendor.service;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import drinkvendor.model.Drink;
+import drinkvendor.model.Recipe;
 
 public class DrinkService {
     private List<Drink> availableDrinks = new ArrayList<>();
@@ -16,12 +16,9 @@ public class DrinkService {
     }
 
     private void setupDrinks() {
-        // Composition for 300ml drink:
-        // 150ml blended fruit (50% of 300ml), 90ml ice, 60ml condensed milk, 24g sugar
-
         // Strawberry Drink
         Map<String, Double> strawberryRecipe = new HashMap<>();
-        strawberryRecipe.put("Strawberry", 150.0); // grams needed (based on Fruit blending ratio)
+        strawberryRecipe.put("Strawberry", 150.0);
         strawberryRecipe.put("Ice", 90.0);
         strawberryRecipe.put("Condensed Milk", 60.0);
         strawberryRecipe.put("Sugar", 24.0);

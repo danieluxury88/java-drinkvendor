@@ -34,17 +34,3 @@ b. Banana: Requires 120g of bananas for each 100ml of blended bananas
 c. Mango: Requires 140g of mango for each 100ml of blended mangos
 
 3. It sells only 1 size of drink, 300ml
-
-Please implement the following basic functions (in priority order)
-
-1. Hard code the vendor’s starting inventory of ingredients
-2. Provide a function to list the vendor’s current inventory of ingredients
-3. Allow the vendor to sell a drink and reduce inventory accordingly
-4. Deny a sale when there are not enough ingredients to make the drink
-
-*** THIS SECTION IS OPTIONAL, NOT REQUIRED ***
-1. Provide a warning when any ingredient gets below the level required to make 4 more drinks
-2. Allow the vendor to sell a mixed fruit drink (for example, banana and strawberry) and reduce inventory accordingly
-3. Allow the vendor to sell 3 sizes (small, medium, and large)
-4. Provide costs for each ingredient and set prices for each drink to ensure she makes a profit
-5. Allow sales over time and provide a report of daily sales

@@ -1,4 +1,4 @@
-package main.java.com.drinkvendor.model;
+package drinkvendor.model;
 
 import java.util.Map;
 

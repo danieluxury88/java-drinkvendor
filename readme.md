@@ -5,10 +5,22 @@ This is a console application to manage the inventory and sales of a street vend
 
 ## Requirements
 - Java 11+
-- No external libraries needed
 
 ## How to Compile and Run
 
 ```bash
-javac -d bin src/**/*.java
-java -cp bin src.Main
+mvn package
+java -cp target/classes drinkvendor.Main
+```
+
+## How to Package and Run
+
+```bash
+mvn clean package
+java -jar target/drinkvendor-1.0.jar
+```
+## How to Test
+
+```bash
+mvn test
+```

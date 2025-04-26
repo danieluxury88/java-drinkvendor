@@ -1,10 +1,10 @@
-package main.java.com.drinkvendor;
-
-import main.java.com.drinkvendor.model.Drink;
-import main.java.com.drinkvendor.service.DrinkService;
-import main.java.com.drinkvendor.service.InventoryService;
+package drinkvendor;
 
 import java.util.Scanner;
+
+import drinkvendor.model.Drink;
+import drinkvendor.service.DrinkService;
+import drinkvendor.service.InventoryService;
 
 public class Main {
     private static InventoryService inventoryService = new InventoryService();
@@ -63,5 +63,8 @@ public class Main {
         } else {
             System.out.println("Sorry, not enough ingredients to make the drink.\n");
         }
+        // Check if any ingredient is low in inventory
+        inventoryService.checkLowInventory(selectedDrink);
+
     }
 }
