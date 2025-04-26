@@ -1,0 +1,45 @@
+@startuml
+class Ingredient {
+    - name: String
+    - unit: String
+    - quantityAvailable: double
+    + getName(): String
+    + getQuantityAvailable(): double
+    + reduceQuantity(amount: double): void
+}
+
+class Fruit extends Ingredient {
+    - gramsPer100mlBlended: double
+    + getBlendedVolume(grams: double): double
+}
+
+class Recipe {
+    - ingredients: Map<String, Double>
+    + getRequiredAmount(ingredient: String): double
+}
+
+class Drink {
+    - name: String
+    - recipe: Recipe
+    + getName(): String
+    + getRecipe(): Recipe
+}
+
+class InventoryService {
+    - ingredients: Map<String, Ingredient>
+    + listInventory(): void
+    + canMakeDrink(drink: Drink): boolean
+    + makeDrink(drink: Drink): boolean
+}
+
+class DrinkService {
+    - availableDrinks: List<Drink>
+    + listDrinks(): void
+    + getDrinkByName(name: String): Drink
+}
+
+Ingredient <|-- Fruit
+Drink *-- Recipe
+InventoryService o-- Ingredient
+DrinkService o-- Drink
+@enduml
