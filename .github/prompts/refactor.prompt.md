@@ -1,6 +1,6 @@
-# Refactoring Guidelines for Zutritto
+# Refactoring Guidelines
 
-When refactoring code in the Zutritto project, follow these goals and constraints:
+When refactoring code follow these goals and constraints:
 
 ## Goals
 
@@ -11,31 +11,29 @@ When refactoring code in the Zutritto project, follow these goals and constraint
 
 ## Technologies
 
-- Symfony 7 (PHP 8.3)
-- Doctrine ORM
-- Twig templates
-- Symfony components for Forms, Routing, and Validation
+- Java 11+
 
 ## Refactor Targets
 
 - **Controllers**: Should delegate complex logic to services. Keep them slim and focused on handling the HTTP layer.
-- **Services**: Extract reusable, testable business logic into services under `src/Service/`.
-- **Entities**: Avoid including application logic in Doctrine entities. Use them for data modeling only.
-- **Templates**: Reduce complex conditionals. Extract Twig macros or components if needed.
-- **Forms**: Keep form configuration readable. Move data transformers or event listeners to separate classes if large.
+- **Services**: Extract reusable, testable business logic into services under `src/main/java/com/example/service/`.
+- **Entities**: Avoid including application logic in entity classes. Use them for data modeling only.
+- **Templates**: If applicable, reduce complex conditionals. Extract reusable components or helper methods.
 - **Enums**: Replace hard-coded string values (like status codes) with `enum` types.
-- **Validation**: Move custom validation logic into dedicated constraints and validators.
+- **Validation**: Move custom validation logic into dedicated validators or utility classes.
 
 ## Naming Conventions
 
-- Services end in `Service`, e.g., `TicketQrService`, `ReservationManagerService`.
-- Enums use PascalCase and singular names, e.g., `ReservationStatus`.
-- Repository classes end in `Repository`, and are located in `src/Repository/`.
+- Services end in `Service`, e.g., `DrinkOrderService`, `VendorManagementService`.
+- Enums use PascalCase and singular names, e.g., `OrderStatus`.
+- Repository classes end in `Repository`, and are located in `src/main/java/com/example/repository/`.
 
 ## Best Practices
 
-- Use constructor property promotion and `readonly` where applicable.
-- Use `match` expressions instead of complex `switch` or `if` chains.
-- Always declare `strict_types=1` at the top of each PHP file.
-- Use type-safe approaches: return types, param types, nullable types.
+- Use constructor injection for dependencies to promote testability.
+- Use `final` for variables and classes where immutability is desired.
+- Use `switch` expressions (if using Java 14+) for cleaner conditional logic.
 - Prefer immutability where possible.
+- Follow Java naming conventions: camelCase for variables and methods, PascalCase for classes.
+- Write unit tests for all services and business logic.
+- Use logging (e.g., SLF4J) instead of `System.out.println` for debugging and monitoring.

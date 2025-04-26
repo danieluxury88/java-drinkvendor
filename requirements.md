@@ -1,5 +1,4 @@
 # Requirements
-
 - Lightweight application to demonstrate your software development skills.
 - The application allows a street vendor to
     - sell blended fruit drinks and
