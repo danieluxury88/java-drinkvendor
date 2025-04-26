@@ -1,7 +1,7 @@
-package service;
+package main.java.com.drinkvendor.service;
 
-import model.Drink;
-import model.Recipe;
+import main.java.com.drinkvendor.model.Drink;
+import main.java.com.drinkvendor.model.Recipe;
 
 import java.util.ArrayList;
 import java.util.HashMap;

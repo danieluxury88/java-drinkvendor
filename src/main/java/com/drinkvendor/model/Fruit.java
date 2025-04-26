@@ -1,4 +1,4 @@
-package model;
+package main.java.com.drinkvendor.model;
 
 public class Fruit extends Ingredient {
     private double gramsPer100mlBlended;

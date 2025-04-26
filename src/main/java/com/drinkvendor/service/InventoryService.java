@@ -1,12 +1,12 @@
-package service;
-
-import model.Drink;
-import model.Ingredient;
-import model.Fruit;
-import model.Recipe;
+package main.java.com.drinkvendor.service;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import main.java.com.drinkvendor.model.Drink;
+import main.java.com.drinkvendor.model.Fruit;
+import main.java.com.drinkvendor.model.Ingredient;
+import main.java.com.drinkvendor.model.Recipe;
 
 public class InventoryService {
     private Map<String, Ingredient> ingredients = new HashMap<>();

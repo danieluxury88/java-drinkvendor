@@ -1,6 +1,8 @@
-import model.Drink;
-import service.DrinkService;
-import service.InventoryService;
+package main.java.com.drinkvendor;
+
+import main.java.com.drinkvendor.model.Drink;
+import main.java.com.drinkvendor.service.DrinkService;
+import main.java.com.drinkvendor.service.InventoryService;
 
 import java.util.Scanner;
 

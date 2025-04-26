@@ -1,4 +1,4 @@
-package model;
+package main.java.com.drinkvendor.model;
 
 public class Drink {
     private String name;
